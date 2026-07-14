@@ -4,7 +4,7 @@
 # Required variables
 venue: "Erasmus University Rotterdam"        # brief name of the institution that hosts the workshop without address (e.g., "Euphoric State University")
 address: "TBD"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria"), videoconferencing URL, or 'online'
-country: "Netherlands"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the institution that hosts the workshop
+country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the institution that hosts the workshop
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for the workshop
 latitude: "FIXME"     # decimal latitude of workshop venue - this should be a number greater than or equal to -90, and less than or equal to 90 (use https://www.latlong.net/)
 longitude: "FIXME"    # decimal longitude of the workshop venue - this should be a number greater than or equal to -180, and less than or equal to 180 (use https://www.latlong.net)
@@ -19,7 +19,7 @@ email: ["helena.wedig@eur.nl"]    # boxed, comma-separated list of contact email
 # Optional variables
 collaborative_notes:  # URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
 eventbrite:           # alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
-what3words:           # what3words (https://what3words.com) address of the workshop venue, without leading slashes e.g. "globe.lessening.computers"
+# what3words:           # what3words (https://what3words.com) address of the workshop venue, without leading slashes e.g. "globe.lessening.computers"
 
 # DON'T CHANGE THIS
 layout: workshop      
@@ -515,23 +515,7 @@ of code below the Schedule `<h2>` header below with
 <div class="card mb-2">
   <h5 class="card-header">Schedule</h5>
   <div class="card-body">
-    {% assign schedule_file = site.carpentry | append: '/schedule.html' %}
-    {% if isOfficial %}
-    {% include {{ schedule_file }} %}
-    {% elsif site.carpentry == "incubator" %}
-    This workshop is teaching a lesson in <a href="https://carpentries-incubator.org/">The Carpentries Incubator</a>.
-    Please check <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for a list of lesson sections and estimated timings.
-    {% endif %}
-
-    {% comment %}
-    Edit/replace the text above if you want to include a schedule table.
-    See the contents of the _includes/custom-schedule.html file for an example of how one of these schedule tables is constructed.
-    {% endcomment %}
-
-    {% if site.pilot %}
-    The lesson taught in this workshop is being piloted and a precise schedule is yet to be established.
-    The workshop will include regular breaks. Please <a href="mailto:{{page.email}}">contact the workshop organisers</a> if you would like more information about the planned schedule.
-    {% endif %}
+    {% include custom-schedule.html %}
   </div>
 </div>
 
